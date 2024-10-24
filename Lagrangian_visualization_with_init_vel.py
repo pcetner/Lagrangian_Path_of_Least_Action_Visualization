@@ -44,7 +44,7 @@ x_case2[0], v_x_case2[0] = x0, v_x0_case2
 y_case2[0], v_y_case2[0] = y0, v_y0_case2
 
 # Create figure
-fig = plt.figure(figsize=(16, 10))
+fig = plt.figure(figsize=(19, 11))
 flare_colors = sns.color_palette("flare")
 crest_colors = sns.color_palette("crest")
 
@@ -118,18 +118,18 @@ for frame in range(len(t)):
     ax1.legend(loc='upper left')
 
     # Case 1 - y vs ydot
-    Lagrangian_case1_y = F/m * Y + 0.5 * Ydot**2
+    Lagrangian_case1_y = 0.5 * m * Ydot**2
     ax2.plot_surface(Y, Ydot, Lagrangian_case1_y, cmap='flare', alpha=0.6)
     
     # Update the big dot for Case 1
     ax2.scatter3D(y_case1[frame + 1], v_y_case1[frame + 1], 
-                   F/m * y_case1[frame + 1] + 0.5 * v_y_case1[frame + 1]**2,
-                   color=flare_colors[4], s=100)
+                   0.5 * m * v_y_case1[frame + 1]**2,
+                   color=flare_colors[4], s=100, edgecolor='black', linewidth=1.5)
 
     # Store small dot for Case 1 if conditions are met
     if frame % dot_step == 0:
         small_dots_case1_y.append((y_case1[frame], v_y_case1[frame], 
-                                 F/m * y_case1[frame] + 0.5 * v_y_case1[frame]**2))
+                                 y_case1[frame] + 0.5 * m * v_y_case1[frame]**2))
     
     # Plot all stored small dots for Case 1 and draw lines down to z=0
     for dot in small_dots_case1_y:
@@ -140,21 +140,21 @@ for frame in range(len(t)):
     ax2.set_xlabel('y')
     ax2.set_ylabel('ydot')
     ax2.set_zlabel('Lagrangian')
-    ax2.view_init(35, 135)
+    ax2.view_init(32, 25)
 
     # Case 2 - y vs ydot
-    Lagrangian_case2_y = F/m * Y + 0.5 * (Ydot - 5)**2
+    Lagrangian_case2_y = 0.5 * m * (Ydot - 5)**2
     ax3.plot_surface(Y, Ydot, Lagrangian_case2_y, cmap='crest', alpha=0.6)
     
     # Update the big dot for Case 2
     ax3.scatter3D(y_case2[frame + 1], v_y_case2[frame + 1],
-                   F/m * y_case2[frame + 1] + 0.5 * (v_y_case2[frame + 1] - 5)**2,
-                   color=crest_colors[4], s=100)
+                   0.5 * m *(v_y_case2[frame + 1] - 5)**2,
+                   color=crest_colors[4], s=100, edgecolor='black', linewidth=1.5)
 
     # Store small dot for Case 2 if conditions are met
     if frame % dot_step == 0:
         small_dots_case2_y.append((y_case2[frame], v_y_case2[frame], 
-                                 F/m * y_case2[frame] + 0.5 * (v_y_case2[frame] - 5)**2))
+                                 0.5 * m * (v_y_case2[frame] - 5)**2))
     
     # Plot all stored small dots for Case 2 and draw lines down to z=0
     for dot in small_dots_case2_y:
@@ -168,18 +168,18 @@ for frame in range(len(t)):
     ax3.view_init(35, 135)
 
     # Case 1 - x vs xdot
-    Lagrangian_case1_x = F/m * X + 0.5 * Xdot**2
+    Lagrangian_case1_x = -1 * F/m * X + 0.5 * m * Xdot**2
     ax4.plot_surface(X, Xdot, Lagrangian_case1_x, cmap='flare', alpha=0.6)
 
     # Update the big dot for Case 1
     ax4.scatter3D(x_case1[frame + 1], v_x_case1[frame + 1], 
-                   F/m * x_case1[frame + 1] + 0.5 * v_x_case1[frame + 1]**2,
-                   color=flare_colors[4], s=100)
+                   -1 * F/m * x_case1[frame + 1] + 0.5 * v_x_case1[frame + 1]**2,
+                   color=flare_colors[4], s=100, edgecolor='black', linewidth=1.5)
 
     # Store small dot for Case 1 if conditions are met
     if frame % dot_step == 0:
         small_dots_case1_x.append((x_case1[frame], v_x_case1[frame], 
-                                 F/m * x_case1[frame] + 0.5 * v_x_case1[frame]**2))
+                                 -1 * F/m * x_case1[frame] + 0.5 * v_x_case1[frame]**2))
     
     # Plot all stored small dots for Case 1 and draw lines down to z=0
     for dot in small_dots_case1_x:
@@ -190,21 +190,21 @@ for frame in range(len(t)):
     ax4.set_xlabel('x')
     ax4.set_ylabel('xdot')
     ax4.set_zlabel('Lagrangian')
-    ax4.view_init(35, 135)
+    ax4.view_init(-150, -50)
 
     # Case 2 - x vs xdot
-    Lagrangian_case2_x = F/m * X + 0.5 * (Xdot - 5)**2
+    Lagrangian_case2_x = -1 * F/m * X + 0.5 * m * (Xdot - 5)**2
     ax5.plot_surface(X, Xdot, Lagrangian_case2_x, cmap='crest', alpha=0.6)
 
     # Update the big dot for Case 2
     ax5.scatter3D(x_case2[frame + 1], v_x_case2[frame + 1],
-                   F/m * x_case2[frame + 1] + 0.5 * (v_x_case2[frame + 1] - 5)**2,
-                   color=crest_colors[4], s=100)
+                   -1 * F/m * x_case2[frame + 1] + 0.5 * (v_x_case2[frame + 1] - 5)**2,
+                   color=crest_colors[4], s=100, edgecolor='black', linewidth=1.5)
 
     # Store small dot for Case 2 if conditions are met
     if frame % dot_step == 0:
         small_dots_case2_x.append((x_case2[frame], v_x_case2[frame], 
-                                 F/m * x_case2[frame] + 0.5 * (v_x_case2[frame] - 5)**2))
+                                 -1 * F/m * x_case2[frame] + 0.5 * (v_x_case2[frame] - 5)**2))
     
     # Plot all stored small dots for Case 2 and draw lines down to z=0
     for dot in small_dots_case2_x:
@@ -215,7 +215,7 @@ for frame in range(len(t)):
     ax5.set_xlabel('x')
     ax5.set_ylabel('xdot')
     ax5.set_zlabel('Lagrangian')
-    ax5.view_init(35, 135)
+    ax5.view_init(-161, -36)
 
     # Pause to create animation effect
     plt.pause(0.01)
