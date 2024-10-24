@@ -31,6 +31,8 @@ In order to gain a more intuitive understand of what is going on, let us focus o
 <p align="center">
   <img src="https://github.com/user-attachments/assets/8e913c19-02bf-4f28-8021-47425c6c08e4" alt="case_2_x" width="600"/>
 </p>
+
+
 The "action" is represented by the area of the surface traced out by the dashed white lines. To gain an intuition for the "path of least action," let us assume that the equation for the Lagrangian of our system is both fixed and known (In other words, the plotted surface does not change) and that we have known starting and ending x positions. We will aim to find a "path" by varying the values of velocity in order to minimize the area traced out by the dashed white lines. 
 
 
