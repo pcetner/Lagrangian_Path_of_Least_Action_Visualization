@@ -49,6 +49,6 @@ This Python script uses matplotlib, mplcyberpunk, and seaborn to generate a dyna
 
 Install dependencies:
 
-bashCopypip install numpy matplotlib mplcyberpunk seaborn
+`pip install numpy matplotlib mplcyberpunk seaborn`
 
 Run the script in a Python environment. The animation will display the movement of both particles over time, along with the Lagrangian surface plots.
